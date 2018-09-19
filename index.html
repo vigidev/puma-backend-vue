@@ -5,11 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>PUMA Computing | OAsys by Arvipi</title>
-    <link rel="stylesheet" href="/static/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="/static/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="<%= htmlWebpackPlugin.files.publicPath %>static/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="<%= htmlWebpackPlugin.files.publicPath %>static/vendors/css/vendor.bundle.base.css">
     <link rel="icon" type="image/png" sizes="32x32" href="<%= htmlWebpackPlugin.files.publicPath %>static/img/icons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="<%= htmlWebpackPlugin.files.publicPath %>static/img/icons/favicon-16x16.png">
-    <!--[if IE]><link rel="shortcut icon" href="/static/img/icons/favicon.ico"><![endif]-->
+    <!--[if IE]><link rel="shortcut icon" href="<%= htmlWebpackPlugin.files.publicPath %>static/img/icons/favicon.ico"><![endif]-->
     <!-- Add to home screen for Android and modern mobile browsers -->
     <link rel="manifest" href="<%= htmlWebpackPlugin.files.publicPath %>static/manifest.json">
     <meta name="theme-color" content="#4DBA87">
@@ -36,9 +36,9 @@
     <!-- Todo: only include in production -->
     <%= htmlWebpackPlugin.options.serviceWorkerLoader %>
     <!-- built files will be auto injected -->
-    <script src="/static/vendors/js/vendor.bundle.base.js"></script>
-    <script src="/static/vendors/js/vendor.bundle.addons.js"></script>
-    <script src="/static/js/off-canvas.js"></script>
-    <script src="/static/js/misc.js"></script>
+    <script src="<%= htmlWebpackPlugin.files.publicPath %>static/vendors/js/vendor.bundle.base.js"></script>
+    <script src="<%= htmlWebpackPlugin.files.publicPath %>static/vendors/js/vendor.bundle.addons.js"></script>
+    <script src="<%= htmlWebpackPlugin.files.publicPath %>static/js/off-canvas.js"></script>
+    <script src="<%= htmlWebpackPlugin.files.publicPath %>static/js/misc.js"></script>
   </body>
 </html>
