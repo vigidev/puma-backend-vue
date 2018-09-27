@@ -1,5 +1,6 @@
 <template>
-    <div id="Layout">
+  <div id="Layout">
+    <div v-if="$auth.ready()">
       <div class="container-scroller">
         <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
           <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
@@ -19,7 +20,7 @@
                 <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
                   <div class="nav-profile-img">
                     <img src="/static/computing-black.png" alt="Profile Picture">
-                    <span class="availability-status online"></span>             
+                    <span class="availability-status online"></span>
                   </div>
                   <div v-if="$auth.check()" class="nav-profile-text">
                     <p class="mb-1 text-black">{{ $auth.user().name }}</p>
@@ -45,14 +46,15 @@
           </div>
         </nav>
         <div class="container-fluid page-body-wrapper">
-        <transition name="slide">
-          <nav class="sidebar sidebar-offcanvas" :class="{'active': active}" id="sidebar">
+          <transition name="slide">
+            <nav class="sidebar sidebar-offcanvas" :class="{'active': active}" id="sidebar">
               <ul class="nav">
                 <li class="nav-item nav-profile">
                   <a href="#" class="nav-link">
                     <div class="nav-profile-image">
                       <img src="/static/computing-black.png" alt="Profile Picture">
-                      <span class="login-status online"></span> <!--change to offline or busy as needed-->              
+                      <span class="login-status online"></span>
+                      <!--change to offline or busy as needed-->
                     </div>
                     <div v-if="$auth.check()" class="nav-profile-text d-flex flex-column">
                       <span class="font-weight-bold mb-2">{{ $auth.user().name }}</span>
@@ -74,12 +76,14 @@
                   </a>
                 </router-link>
                 <li :class="['nav-item', {'active': this.$route.path==='/news' || this.$route.path==='/news/category'}]">
-                  <a :class="['nav-link', {'collapsed': this.$route.path!=='/news' || this.$route.path!=='/news/category'}]" data-toggle="collapse" href="#news" aria-expanded="false" aria-controls="news">
+                  <a :class="['nav-link', {'collapsed': this.$route.path!=='/news' || this.$route.path!=='/news/category'}]"
+                    data-toggle="collapse" href="#news" aria-expanded="false" aria-controls="news">
                     <span class="menu-title">News</span>
                     <i class="menu-arrow"></i>
                     <i class="mdi mdi-file-multiple menu-icon"></i>
                   </a>
-                  <div :class="['collapse', {'show': this.$route.path==='/news' || this.$route.path==='/news/category'}]" id="news">
+                  <div :class="['collapse', {'show': this.$route.path==='/news' || this.$route.path==='/news/category'}]"
+                    id="news">
                     <ul class="nav flex-column sub-menu">
                       <router-link tag="li" class="nav-item" to="/news"><a class="nav-link">News</a></router-link>
                       <router-link tag="li" class="nav-item" to="/news/category"><a class="nav-link">Category</a></router-link>
@@ -87,12 +91,14 @@
                   </div>
                 </li>
                 <li :class="['nav-item', {'active': this.$route.path==='/download' || this.$route.path==='/download/category'}]">
-                  <a :class="['nav-link', {'collapsed': this.$route.path!=='/download' || this.$route.path!=='/download/category'}]" data-toggle="collapse" href="#download" aria-expanded="false" aria-controls="download">
+                  <a :class="['nav-link', {'collapsed': this.$route.path!=='/download' || this.$route.path!=='/download/category'}]"
+                    data-toggle="collapse" href="#download" aria-expanded="false" aria-controls="download">
                     <span class="menu-title">Download</span>
                     <i class="menu-arrow"></i>
                     <i class="mdi mdi-folder-download menu-icon"></i>
                   </a>
-                  <div :class="['collapse', {'show': this.$route.path==='/download' || this.$route.path==='/download/category'}]" id="download">
+                  <div :class="['collapse', {'show': this.$route.path==='/download' || this.$route.path==='/download/category'}]"
+                    id="download">
                     <ul class="nav flex-column sub-menu">
                       <router-link tag="li" class="nav-item" to="/download"><a class="nav-link">Download</a></router-link>
                       <router-link tag="li" class="nav-item" to="/download/category"><a class="nav-link">Category</a></router-link>
@@ -103,20 +109,18 @@
             </nav>
           </transition>
           <div class="main-panel">
-          <div class="content-wrapper">
-            <div v-if="$auth.ready()">
-              <!-- <vue-router></vue-router>-->
+            <div class="content-wrapper">
               <router-view></router-view>
             </div>
-            <div v-if="!$auth.ready()">
-              Fetching user...
-            </div>
-          </div>
-          <Footer/>
+            <Footer />
           </div>
         </div>
       </div>
     </div>
+    <div v-if="!$auth.ready()">
+      Fetching user...
+    </div>
+  </div>
 </template>
 
 <script>
@@ -139,7 +143,7 @@ export default {
           params: {}, // data: {} in axios
           success: function () {},
           error: function () {},
-          redirect: '/',
+          redirect: '/login',
         });
       },
       toggleSidebar() {

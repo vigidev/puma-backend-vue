@@ -16,15 +16,15 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
-    {
-      path: '/callback',
-      name: 'Redirect',
-      component: Redirect,
-      props: (route) => ({ redirect_url: route.query.redirect_url }),
-      meta: {
-          auth: true
-      }
-    },
+    // {
+    //   path: '/callback',
+    //   name: 'Redirect',
+    //   component: Redirect,
+    //   props: (route) => ({ redirect_url: route.query.redirect_url }),
+    //   meta: {
+    //       auth: true
+    //   }
+    // },
     {
       path: '/login',
       name: 'Login',
@@ -37,22 +37,22 @@ export default new Router({
       path: '/403',
       name: 'Page403',
       component: Page403,
-      meta: {
-          auth: true
-      }
+    //   meta: {
+    //       auth: true
+    //   }
     },
     {
       path: '/404',
       name: 'Page404',
       component: Page404,
-      meta: {
-          auth: true
-      }
+    //   meta: {
+    //       auth: true
+    //   }
     },
     {
-      path: '',
+      path: '/',
       component: Layout,
-      redirect: 'login',
+      redirect: '/dashboard',
       children: [{
         path: 'dashboard',
         name: 'Dashboard',
